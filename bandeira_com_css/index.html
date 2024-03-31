@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style/index.css" />
+    <title>Bandeira com CSS</title>
+  </head>
+  <body>
+    <h1>Bandeira com CSS</h1>
+    <section>
+      <p>
+        Neste documento html pensando na semântica correta do HTML, para que os
+        leitores de página web possam identificar corretamente cada campo.
+      </p>
+    </section>
+    <section alt="bandeira do japão">
+      <h2>Bandeira do Japão</h2>
+      <p>Se quiser saber mais sobre a bandeira do Japão, clique na bandeira.</p>
+      <div class="div_bandeira" alt="Link mostrando a bandeira do japão">
+        <a
+          href="https://brasilescola.uol.com.br/japao/bandeira-do-japao.htm"
+          target="_blank"
+        >
+          <div class="bandeira_japao">
+            <div class="circulo"></div>
+          </div>
+        </a>
+      </div>
+    </section>
+    <section>
+      <h2>Aplicando javascript</h2>
+      <p>
+        Como o professor comentou que era possível mostrar duas bandeiras apenas
+        mudando a direção das div's no html, vou aplicar esta idea abaixo.
+      </p>
+      <button onclick="mudaBandeira()" type="">Muda Bandeira</button>
+      <div class="nome_bandeira">
+          <p>Bandeira da</p>
+          <p id="bandeira_nome">Bélgica</p>
+      </div>
+      <div class="bandeira">
+        <div class="preto tam_cores_bandeira"></div>
+        <div class="vermelho tam_cores_bandeira"></div>
+        <div class="dourado tam_cores_bandeira"></div>
+      </div>
+    </section>
+    <script>
+        tag = false;
+        let nomeBandeira = document.getElementById("bandeira_nome");
+        let bandeira = document.querySelector("div[class='bandeira']");
+        
+        function mudaBandeira () {    
+            if (nomeBandeira.textContent == "Alemanha") {
+                nomeBandeira.innerHTML = "Bélgica";
+                bandeira.style.webkitTransform = 'rotate(0deg)';
+                bandeira.style.width = "426px";
+                bandeira.style.heigth = "284px";
+                // bandeira.style.display = "flex-direction:row";
+                // bandeira.style.display = "flex";
+            } else {
+                nomeBandeira.innerHTML = "Alemanha";
+                bandeira.style.display = "flex-direction:column";
+                // bandeira.style.display = "block";
+                bandeira.style.webkitTransform = 'rotate(90deg)';
+                bandeira.style.position = "relative";
+                bandeira.style.heigth = "426px";
+                bandeira.style.width = "284px";
+                // bandeira.style.top = "200px";
+            }
+
+      }
+    </script>
+  </body>
+</html>
