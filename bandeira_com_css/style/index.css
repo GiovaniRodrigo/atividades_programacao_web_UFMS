@@ -3,7 +3,7 @@ body {
     font-size: 16px;
 }
 
-.div_bandeira {
+.section_bandeira {
     width: 400px;
     height: 266px;
 }
@@ -17,11 +17,13 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 400px;
+    height: 266px;
 }
 .circulo {
     background-color: #dc143c;
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
 }
 
