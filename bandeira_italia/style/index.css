@@ -1,0 +1,28 @@
+body {
+    font-family: sans-serif;
+}
+
+.bandeira {
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    width: min-content;
+}
+
+.verde {
+    background-color: green;
+}
+
+.branco {
+    background-color: white;
+}
+
+.vermelho{
+    background-color: red;
+}
+
+.tam_cores_bandeira {
+    width: 142px;
+    height: 284px;
+}
