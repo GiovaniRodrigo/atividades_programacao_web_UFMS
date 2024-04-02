@@ -2,15 +2,38 @@ body {
     font-family: sans-serif;
 }
 
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
 .bandeira {
     display: flex;
     border-style: solid;
     border-width: 1px;
     border-color: black;
-    width: min-content;
+    width: 500px;
+    height: 350px;
 }
 
-.verde {
+.linhas{
+    width: 33.333%;
+    height: 100%;
+}
+.linhas:nth-child(1) {
+    background-color: green;
+}
+
+.linhas:nth-child(2) {
+    background-color: white;
+}
+
+.linhas:nth-child(3) {
+    background-color: red;
+}
+
+/* .verde {
     background-color: green;
 }
 
@@ -20,7 +43,7 @@ body {
 
 .vermelho{
     background-color: red;
-}
+} */
 
 .tam_cores_bandeira {
     width: 142px;
