@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {grid-area: header};
+section {grid-area: main};
+footer {grid-area: footer};
+
+
+body {
+    position: relative;
+    width: 80vw;
+    height: 100vh;
+    left: 10%;    
+    grid-template-areas: 
+        'header header header header header header'
+        'main main aside aside '
+        'footer footer footer footer footer footer';
+}
+
+h1 {
+    background-image: url("../images/3376542.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 40px;
+    color: white;
+}
+
+nav {
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+nav ul li:hover {
+    background-color: rgb(53, 48, 48);
+    transition: 1s;
+}
+
+p {
+    text-indent: 5ch;
+    text-align: justify;
+}
