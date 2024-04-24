@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Soma</title>
+</head>
+<body>
+    <div class="main">
+        <h2>Dobro do número</h2>
+        <form>
+            <div class="main"> 
+                <label >Número</label>
+                <input type="number" name="numero" id="valor"/>
+
+                <p class="main" id="resultado"></p>
+            </div>
+
+            
+            <button type="button" onclick="handleSubmit()">Calcule</button>
+        </form>
+        
+    </div>
+    <script>
+        function handleSubmit () {
+            let n = document.getElementById("valor").value;
+            
+            let soma = n * 2;
+
+            document.getElementById("resultado").innerText = "O resultado é: " + soma;
+        }
+    </script>
+</body>
+</html>

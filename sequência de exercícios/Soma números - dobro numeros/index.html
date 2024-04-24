@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Soma</title>
+</head>
+<body>
+    <div class="main">
+        <h2>Soma 2 números</h2>
+        <form>
+            <div class="main"> 
+                <label >Número 1</label>
+                <input type="number" name="numero" id="valor1"/>
+
+                <label >Número 2</label>
+                <input type="number" name="numero2" id="valor2">
+                
+                <p class="main" id="resultado"></p>
+            </div>
+
+            
+            <button type="button" onclick="handleSubmit()">Soma</button>
+        </form>
+        
+    </div>
+    <script>
+        function handleSubmit () {
+            let n1 = document.getElementById("valor1").value;
+            let n2 = document.getElementById("valor2").value;
+            
+            let soma = parseInt(n1) + parseInt(n2);
+
+            document.getElementById("resultado").innerText = "O resultado é: " + soma;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Área do Triângulo</title>
+</head>
+
+<body>
+    <h1>Área do Triângulo</h1>
+    <div>
+        <form>
+            <div class="valores">
+                <label for="">Base</label>
+                <input type="number" id="base">
+                <div id="mensagemErro"></div>
+                <label for="">Altura</label>
+                <input type="number" id="altura">
+                <div id="mensagemErro"></div>
+                <button type="button" onclick="calcular()">Calcular</button>
+            </div>
+        </form>
+
+        <div>
+            <p id="resultado"></p>
+        </div>
+    </div>
+    <script>
+        function calcular() {
+            let base = document.getElementById('base').value;
+            let altura = document.getElementById('altura').value;
+
+            if (base < 0 || altura < 0) {
+                document.getElementById("mensagemErro").innerHTML = "O valor não pode ser negativo!<br>";
+            } 
+            if (base == 0 && altura == 0) {
+                document.getElementById("resultado").innerHTML = "o resultado é: " + 0;
+            } else {
+                let resultado = (parseFloat(base) * parseFloat(altura)) / 2;
+                document.getElementById("resultado").innerHTML = "o resultado é: " + resultado;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
