@@ -1,7 +1,7 @@
 export default function Card({ content, backgroundColor }) {
     return (
-        <div class="card" style={{ backgroundColor }}>
-            <div class="card-body">
+        <div className="card" style={{backgroundColor: 'white'}}>
+            <div className="card-body">
                 {content}
             </div>
         </div >

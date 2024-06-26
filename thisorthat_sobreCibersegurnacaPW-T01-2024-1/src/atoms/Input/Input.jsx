@@ -6,7 +6,7 @@ export default function Input({ type, label, placeholder }) {
             style={{
                 gap: "0"
             }}
-                class="form-control"
+                className="form-control"
                 placeholder={placeholder}
                 type="text"
                 aria-describedby="basic-addon2" />

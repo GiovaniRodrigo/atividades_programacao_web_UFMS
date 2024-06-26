@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import ErrorPage from "./error-page";
-import Login from './Components/Login'
-// import './index.css'
+import Login from './Components/Login/Login'
 import {
   createBrowserRouter,
   RouterProvider,
