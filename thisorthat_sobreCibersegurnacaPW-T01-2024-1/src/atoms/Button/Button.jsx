@@ -1,6 +1,6 @@
 export default function Button({ label, icon, primary, onClick }) {
 
-    console.log(onClick)
+
 
     return (
         primary ?
@@ -8,7 +8,7 @@ export default function Button({ label, icon, primary, onClick }) {
                 {label}
             </button>
             :
-            <button className="btn btn-secondary" >
+            <button className="btn btn-secondary" onClick={onClick}>
                 <i className="bi bi-facebook"></i>
                 {label}
             </button>

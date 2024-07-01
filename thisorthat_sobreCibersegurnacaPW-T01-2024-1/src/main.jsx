@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import ErrorPage from "./error-page";
 import Login from './Components/Login/Login'
+import Main from './Components/Main/Main'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
     element: <Login />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/main",
+    element: <Main />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

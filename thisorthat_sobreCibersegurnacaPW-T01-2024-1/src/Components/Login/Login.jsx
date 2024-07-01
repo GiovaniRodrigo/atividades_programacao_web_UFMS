@@ -1,35 +1,62 @@
-import React from 'react';
-import { initializeApp } from 'firebase/app';
-import { getAuth, FacebookAuthProvider } from 'firebase/auth';
+import React, { useState } from 'react';
 import Button from '../../atoms/Button/Button';
 import Card from '../../atoms/Card/Card';
 import Text from '../../atoms/Text/Text';
 import Input from '../../atoms/Input/Input';
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAZ-O7AY0FaL1UGxShinTF6RoZ2_XhkpP0",
-  authDomain: "trab-prog-web-2dfd5.firebaseapp.com",
-  projectId: "trab-prog-web-2dfd5",
-  storageBucket: "trab-prog-web-2dfd5.appspot.com",
-  messagingSenderId: "327311494705",
-  appId: "1:327311494705:web:5ab65fff31342f8335cf10",
-  measurementId: "G-1J5HJ911BY"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+import { auth, googleProvider } from '../../config/firebase'
+import { createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
 
-  function entrarFacebook () {
-    console.log("provider")
-    // const provider = new FacebookAuthProvider();
-    // console.log(provider)
+  const navigate = useNavigate()
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
+  const [user, setUser] = useState({})
+
+
+  const createUser = async () => {
+    if (!email) {
+      window.alert("Insira um e-mail")
+    }else if (!senha) {
+      window.alert("Insira uma senha")
+    }
+    try {
+      let data = await createUserWithEmailAndPassword(auth, email, senha)
+      window.alert("Usuario cadastrado")
+      // console.log(data)
+      const user = userCredential.user
+      console.log(user)
+      // navigate("/main")
+    } catch (error) {
+      console.log(error)
+      window.alert("Houve um erro ao cadastrar usuario")
+      setSenha('')
+      setEmail('')
+    }
+
   }
 
-  function cadastrarSe () {
-    console.log("aldj")
+  const login = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, senha);
+      navigate("/main")
+    } catch (error) {
+      console.log(error)
+      window.alert("Erro ao realizar login, verifique o e-mail e senha")
+    }
+  }
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider)
+    } catch (error) {
+      console.log(error)
+      window.alert("Houve um erro logar com o Google")
+    } finally {
+      console.log("logado")
+      navigate("/main")
+    }
   }
 
   return (
@@ -40,22 +67,11 @@ export default function Login() {
           content={
             <div className='d-grid gap-3'>
               <Text tag={"h4"} content={"Bem-vindo ao ThisOrThat de ProgWeb"} />
-              <Input label={'Usuário'} />
-              <Input label={'Senha'} />
-              <Button label={"Entrar"} primary={true}  />
-              <Button label={"Entrar com Facebook"} icon={''} onClick={() => entrarFacebook()} />
-              <div className='text-center'>
-                <a
-                  onClick={cadastrarSe}
-                  className='alig-self-center'
-                  style={{
-                    cursor: 'pointer',
-                    width: 'min-content',
-                    textWrap: 'nowrap'
-                  }}>
-                  Cadastrar-se
-                </a>
-              </div>
+              <Input label={'E-mail'} onChange={(e) => setEmail(e.target.value)} />
+              <Input label={'Senha'} type={'password'} onChange={(e) => setSenha(e.target.value)} />
+              <Button label={"Entrar"} primary={true} onClick={login} />
+              <Button label={"Google"} onClick={signInWithGoogle} />
+              <Button label={"Cadastrar-se"} onClick={createUser} />
             </div>
           } />
       </section>
