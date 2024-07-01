@@ -56,14 +56,17 @@ export default function Main(props) {
     return (
         <>
             <section className="">
-                <Button label={"Comecar"} onClick={getImagesFirstTime} />
+                <div className="d-flex gap-3 ">
+                    <Button label={"Logout"} onClick={handleLogout} />
+                </div>
                 {/* this or that side */}
                 <div className="d-flex p-3 row justify-content-center" >
+                    <Button label={"Comecar"} onClick={getImagesFirstTime} />
                     <div className="col-4 text-center p-3" style={{
                         maxWidth: "250",
                         minWidth: "250"
                     }}>
-                        <span onClick={() => getImagem(1)} style={{
+                        <span onClick={(e) => getImagem(1)} style={{
                             cursor: "pointer"
                         }}>
                             <Image source={imagem1} width={"250"} />
@@ -80,7 +83,6 @@ export default function Main(props) {
                         </span>
                     </div>
                 </div>
-                <Button label={"Logout"} onClick={handleLogout} />
             </section>
         </>
     )
