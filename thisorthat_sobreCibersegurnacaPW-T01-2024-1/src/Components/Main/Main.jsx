@@ -5,6 +5,7 @@ import { auth } from "../../config/firebase"
 import Image from "../../atoms/Image/Image"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
+import checkImage from '../../assets/pngegg.png'
 
 export default function Main(props) {
 
@@ -12,6 +13,8 @@ export default function Main(props) {
     const [imagem1, setImagem1] = useState('')
     const [imagem2, setImagem2] = useState('')
     const [imagensSelecionadas, setImagensSelecionadas] = useState([])
+    const [spinner, setSpinner] = useState(false)
+    const [lado, setLado] = useState('')
 
 
     async function getImagem(imagem) {
@@ -24,6 +27,7 @@ export default function Main(props) {
     }
 
     async function getImagesFirstTime() {
+        setSpinner(true)
         let index = 0;
         while (!imagem2 && index < 3) {
             let data = await axios.get("https://random.dog/woof.json")
@@ -38,6 +42,7 @@ export default function Main(props) {
             }
             index++;
         }
+        setSpinner(false)
     }
 
     const handleLogout = async () => {
@@ -53,47 +58,54 @@ export default function Main(props) {
     return (
         <>
             <section className="">
-                <div className="d-flex gap-3 ">
-                    <Button label={"Logout"} onClick={handleLogout} />
-                </div>
                 {/* this or that side */}
-                <div className="d-flex row m-2 justify-content-center" >
+                <div className="d-flex row no-wrap m-2 justify-content-center  w-100" >
+                    {lado}
+                    <Button label={"Logout"} onClick={handleLogout} />
                     <Button label={"Comecar"} onClick={getImagesFirstTime} />
+                    {/* Spinner */}
                     <div className="col-4 text-center p-3" style={{
-                        maxWidth: "250px",
-                        minWidth: "250px"
+                        maxWidth: "250px"
                     }}>
-                        <span onClick={(e) => {
+                        {spinner &&
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only"></span>
+                            </div>
+                        }
+                        {<span onClick={async (e) => {
+                            setLado("esquerda")
                             setImagensSelecionadas([...imagensSelecionadas, imagem1])
                             getImagem(1)
                         }} style={{
                             cursor: "pointer"
                         }}>
-                            <Image source={imagem1} width={"250"} />
-                        </span>
+                            <Image source={imagem1} width={"100%"} />
+                        </span>}
                     </div>
                     <div className="col-4 text-center p-3" style={{
-                        maxWidth: "250px",
-                        minWidth: "250px"
+                        maxWidth: "250px"
                     }}>
                         <span onClick={(e) => {
+                            setLado("direita")
                             setImagensSelecionadas([...imagensSelecionadas, imagem2])
                             getImagem(2)
                         }}
                             style={{
                                 cursor: "pointer"
                             }}>
-                            <Image source={imagem2} width={"250"} />
+                            <Image source={imagem2} width={"100%"} />
                         </span>
                     </div>
                 </div>
             </section>
-            <section className="d-flex flex-wrap gap-3">
-                {imagensSelecionadas.map((e) => {
-                    return <div style={{
-                        boxShadow: "black"
-                    }}><Image source={e} width={"200"} /></div>
-                })}
+            <section className="">
+                <div className="d-flex flex-wrap gap-3" style={{
+                    maxWidth: "250"
+                }}>
+                    {imagensSelecionadas.map((e, index) => {
+                        return <Image source={e} width={"150px"} className={`sm-col-${index}`} />
+                    })}
+                </div>
             </section>
         </>
     )
